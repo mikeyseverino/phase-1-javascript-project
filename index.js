@@ -9,8 +9,10 @@ function fetchNewsArticles() {
 function newsArticles(articles){
     let articleContainer = document.getElementById("article-container")
     let logoContainer = document.getElementById("logo-spot")
-    let appendLogo = document.createElement("img");
-    appendLogo.innerHTML = `<img src=${articles.parsely.meta.publisher.logo.url}>`
+    console.log(logoContainer);
+    let appendLogo = document.createElement("ul");
+    console.log(appendLogo);
+    appendLogo.innerHTML = `<img src="https://techcrunch.com/wp-content/themes/techcrunch-2017/images/logo-json-ld.png">`
     logoContainer.appendChild(appendLogo);
     articles.forEach(article => {
         let ul = document.createElement("ul");
