@@ -9,18 +9,17 @@ function fetchNewsArticles() {
 function newsArticles(articles){
     let articleContainer = document.getElementById("article-container")
     let logoContainer = document.getElementById("logo-spot")
-    console.log(logoContainer);
     let appendLogo = document.createElement("ul");
-    console.log(appendLogo);
     appendLogo.innerHTML = `<img src="https://techcrunch.com/wp-content/themes/techcrunch-2017/images/logo-json-ld.png">`
     logoContainer.appendChild(appendLogo);
+
     articles.forEach(article => {
         let ul = document.createElement("ul");
         ul.innerHTML = `
         <div class="card">
             <div class="article-picture" >
                 <img src=${article.jetpack_featured_media_url}>
-            </div>
+            </div> <ul class="like"> <span class="like-glyph">&#x2661;</span></ul>
             <h3>${article.title.rendered}</h3>
         </div>
         `
@@ -28,7 +27,38 @@ function newsArticles(articles){
    });
 }
 
-//placeholder for event listener for liking functionality, maybe comment functionality?
+//define liking callback function
+function likeCallback(e) {
+    const heart = e.target;
+    changeHeart()
+      .then(function(){
+        if ( heart.innerText === EMPTY_HEART) {
+          heart.innerText = FULL_HEART;
+          heart.className = "activated-heart";
+        } else {
+          heart.innerText = EMPTY_HEART;
+          heart.className = "";
+        }
+      })
+      .catch(function(error) {
+        const modal = document.getElementById("modal");
+        modal.className = "";
+        modal.innerText = error;
+        setTimeout(() =>  modal.className = "hidden", 3000);
+      });
+  }
+
+//created heart glyphs
+const EMPTY_HEART = '♡'
+const FULL_HEART = '♥'
+
+const articleHearts = document.querySelectorAll(".like-glyph");
+
+//Event listener for liking functionality
+for (const glyph of articleHearts) {
+    glyph.addEventListener("click", likeCallback);
+  }
+
 //event listener for clicking on article and being taken to article page
 
 document.addEventListener('DOMContentLoaded', () => {
