@@ -8,10 +8,10 @@ function fetchNewsArticles() {
 //Display article titles on web app
 function newsArticles(articles){
     let articleContainer = document.getElementById("article-container")
-    // let logoContainer = document.getElementById("logo-spot")
-    // let appendLogo = document.createElement("img");
-    // appendLogo.innerHTML = `<img src=${articles.parsely.meta.publisher.logo.url}>`
-    // logoContainer.appendChild(appendLogo);
+    let logoContainer = document.getElementById("logo-spot")
+    let appendLogo = document.createElement("img");
+    appendLogo.innerHTML = `<img src=${articles.parsely.meta.publisher.logo.url}>`
+    logoContainer.appendChild(appendLogo);
     articles.forEach(article => {
         let ul = document.createElement("ul");
         ul.innerHTML = `
