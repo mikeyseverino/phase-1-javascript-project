@@ -1,0 +1,44 @@
+
+body {
+  background-color: white;
+  }
+  
+h3{
+    overflow-wrap: break-word;
+    padding: 10%;
+    padding-top: 10px;
+    padding-left:20%;
+    padding-bottom:0%;
+    width: 800px;
+}
+#article-container {
+  float: left;
+  margin-left: 0%;
+}
+
+.article-picture img {
+display: inline-block;
+margin-left: 30%;
+position: relative;
+margin: auto;
+size: 10%;
+padding-top: 10px;
+height: 70%;
+width: 70%;
+}
+
+.article-picture {
+  display: inline-block;
+  margin-left: 10%;
+  position: relative;
+  margin: auto;
+  size: 100%;
+  padding: 20px;
+  padding-bottom: 0px;
+  }
+
+  .card {
+    border: solid 1px #000;
+    text-align: center;
+    margin:10%;
+  }
