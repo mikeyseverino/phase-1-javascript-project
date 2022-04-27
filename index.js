@@ -9,7 +9,6 @@ function fetchNewsArticles() {
 function newsArticles(articles){
     let articleContainer = document.getElementById("article-container")
     logoGenerator();
-    const articleHearts = document.querySelectorAll(".like-glyph");
 
     articles.forEach(article => {
         let ul = document.createElement("ul");
@@ -24,26 +23,32 @@ function newsArticles(articles){
         articleContainer.appendChild(ul);
    });
    
-   articleHearts.addEventListener("click", function(){
-       alert("yo I was clicked")
-   });
-
+   const articleHearts = document.querySelectorAll(".like-glyph");
+   console.log(articleHearts);
+   articleHearts.forEach(heart => {
+    heart.addEventListener('click', function(){
+        alert("Yo I was cliked");
+    })
+})
 
 }
 
-//created heart glyphs
+//Create heart glyphs
 const EMPTY_HEART = '♡'
 const FULL_HEART = '♥'
 console.log(FULL_HEART);
 
+//Generate the TechCrunch Logo
 function logoGenerator(){
-let logoContainer = document.getElementById("logo-spot")
+    let logoContainer = document.getElementById("logo-spot")
     let appendLogo = document.createElement("ul");
     appendLogo.innerHTML = `<img src="https://techcrunch.com/wp-content/themes/techcrunch-2017/images/logo-json-ld.png">`
     logoContainer.appendChild(appendLogo);
 }
 
 //Event listener for liking functionality
+ 
+ 
 
 
 //event listener for clicking on article and being taken to article page
