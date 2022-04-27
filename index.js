@@ -8,10 +8,8 @@ function fetchNewsArticles() {
 //Display article titles on web app
 function newsArticles(articles){
     let articleContainer = document.getElementById("article-container")
-    let logoContainer = document.getElementById("logo-spot")
-    let appendLogo = document.createElement("ul");
-    appendLogo.innerHTML = `<img src="https://techcrunch.com/wp-content/themes/techcrunch-2017/images/logo-json-ld.png">`
-    logoContainer.appendChild(appendLogo);
+    logoGenerator();
+    const articleHearts = document.querySelectorAll(".like-glyph");
 
     articles.forEach(article => {
         let ul = document.createElement("ul");
@@ -25,39 +23,28 @@ function newsArticles(articles){
         `
         articleContainer.appendChild(ul);
    });
-}
+   
+   articleHearts.addEventListener("click", function(){
+       alert("yo I was clicked")
+   });
 
-//define liking callback function
-function likeCallback(e) {
-    const heart = e.target;
-    changeHeart()
-      .then(function(){
-        if ( heart.innerText === EMPTY_HEART) {
-          heart.innerText = FULL_HEART;
-          heart.className = "activated-heart";
-        } else {
-          heart.innerText = EMPTY_HEART;
-          heart.className = "";
-        }
-      })
-      .catch(function(error) {
-        const modal = document.getElementById("modal");
-        modal.className = "";
-        modal.innerText = error;
-        setTimeout(() =>  modal.className = "hidden", 3000);
-      });
-  }
+
+}
 
 //created heart glyphs
 const EMPTY_HEART = '♡'
 const FULL_HEART = '♥'
+console.log(FULL_HEART);
 
-const articleHearts = document.querySelectorAll(".like-glyph");
+function logoGenerator(){
+let logoContainer = document.getElementById("logo-spot")
+    let appendLogo = document.createElement("ul");
+    appendLogo.innerHTML = `<img src="https://techcrunch.com/wp-content/themes/techcrunch-2017/images/logo-json-ld.png">`
+    logoContainer.appendChild(appendLogo);
+}
 
 //Event listener for liking functionality
-for (const glyph of articleHearts) {
-    glyph.addEventListener("click", likeCallback);
-  }
+
 
 //event listener for clicking on article and being taken to article page
 
@@ -65,3 +52,10 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchNewsArticles();
 });
 
+
+
+
+//DUMMY CODE
+   // logoContainer.addEventListener("click", function(){
+    //     alert("yo I was clicked")
+    // });
