@@ -22,13 +22,20 @@ function newsArticles(articles){
         `
         articleContainer.appendChild(ul);
    });
-   
+
+   //Event listener for liking functionality
+
    const articleHearts = document.querySelectorAll(".like-glyph");
    console.log(articleHearts);
    articleHearts.forEach(heart => {
     heart.addEventListener('click', function(){
-        alert("Yo I was cliked");
-    })
+        if ( heart.innerText === EMPTY_HEART) {
+            heart.innerText = FULL_HEART;
+            heart.className = "activated-heart";
+          } else {
+            heart.innerText = EMPTY_HEART;
+            heart.className = "non-activated-heart";
+          }    })
 })
 
 }
@@ -46,7 +53,6 @@ function logoGenerator(){
     logoContainer.appendChild(appendLogo);
 }
 
-//Event listener for liking functionality
  
  
 
@@ -56,11 +62,3 @@ function logoGenerator(){
 document.addEventListener('DOMContentLoaded', () => {
     fetchNewsArticles();
 });
-
-
-
-
-//DUMMY CODE
-   // logoContainer.addEventListener("click", function(){
-    //     alert("yo I was clicked")
-    // });
