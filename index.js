@@ -23,10 +23,13 @@ function newsArticles(articles){
         articleContainer.appendChild(ul);
    });
 
-   //Event listener for liking functionality
+   likeEvent();
 
+}
+   //Event listener for liking functionality
+   
+   function likeEvent(){
    const articleHearts = document.querySelectorAll(".like-glyph");
-   console.log(articleHearts);
    articleHearts.forEach(heart => {
     heart.addEventListener('click', function(){
         if ( heart.innerText === EMPTY_HEART) {
@@ -37,13 +40,11 @@ function newsArticles(articles){
             heart.className = "non-activated-heart";
           }    })
 })
-
-}
+   }
 
 //Create heart glyphs
 const EMPTY_HEART = '♡'
 const FULL_HEART = '♥'
-console.log(FULL_HEART);
 
 //Generate the TechCrunch Logo
 function logoGenerator(){
@@ -53,7 +54,6 @@ function logoGenerator(){
     logoContainer.appendChild(appendLogo);
 }
 
- 
  
 
 
